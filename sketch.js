@@ -15,7 +15,7 @@
 // Global variables
 **************************************************************************/
 
-var debugMode = true;
+var gDebugMode = false;
 
 
 
@@ -50,9 +50,11 @@ function draw() {
   fill('#fff');
   stroke('#fff');
 
+  fsMessage();
+
 	// Toggle debug Mode
-  if( debugMode == true ) {
-  	drawDebugInfo();
+  if( gDebugMode == true ) {
+    drawDebugInfo();
   }
 
 }
@@ -62,16 +64,49 @@ function draw() {
 // Custom functions
 **************************************************************************/
 
+
+
+
+
+/*************************************************************************
+// Fullscreen and debug functions
+**************************************************************************/
+
+// Fullscreen message
+function fsMessage() {
+  // if (fs === true) {
+      push();
+      fill(255);
+      noStroke();
+      textSize(width/60);
+      textAlign(LEFT);
+      text("Press [F] for fullscreen", 0 + width/100 , height - height/100)
+      pop();
+    // }
+}
+
+// Get coordinates from click (dsable background)
+function mouseClicked() {
+    print(mouseX, mouseY);
+    fill(205);
+    ellipseMode(CENTER);
+    ellipse(mouseX, mouseY, 5, 5);
+}
+
 // Debug mode
 function drawDebugInfo() {
-	fill(255);
-  	text("X: " + mouseX + "   Y: " + mouseY, 20, height - 20);
+  push();
+    fill(255);
+    noStroke();
+    textSize(20);
+    text("X: " + mouseX + "   Y: " + mouseY, 20, 20);
+  pop();
 }
 
 // keyTyped for debugMode and fullscreen
 function keyTyped() {
   if (key === 'd') {
-    debugMode = !debugMode;
+    gDebugMode = !gDebugMode;
   }
   if (key === 'f') {
     let fs = fullscreen();
