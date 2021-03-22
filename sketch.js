@@ -1,13 +1,13 @@
 /*************************************************************************
-    Project Name
+ Setup
           by Maj Jenkins
+    Date XX, 20XX
 
     Overview:
-
- 
+    
     ---------------------------------------------------------------------
     Notes: 
-     (1)
+     (1) 
 **************************************************************************/
 
 
@@ -15,8 +15,16 @@
 // Global variables
 **************************************************************************/
 
-var gDebugMode = false;
+// Style (Fonts, colors)
 
+
+// Images
+
+
+// Sounds
+
+
+// Buttons and timers
 
 
 
@@ -31,7 +39,14 @@ function windowResized() {
 /*************************************************************************
 // Function preload
 **************************************************************************/
+function preload() {
+  // Fonts
 
+  // Images
+
+  // Music and Sounds
+
+}
 
 /*************************************************************************
 // Function setup
@@ -46,30 +61,15 @@ function setup() {
 **************************************************************************/
 
 function draw() {
-  background('#B7CCD5');
-  fill('#fff');
-  stroke('#fff');
 
-  fsMessage();
 
-	// Toggle debug Mode
-  if( gDebugMode == true ) {
-    drawDebugInfo();
-  }
 
+  // fsMessage();
 }
 
 
 /*************************************************************************
-// Custom functions
-**************************************************************************/
-
-
-
-
-
-/*************************************************************************
-// Fullscreen and debug functions
+// Fullscreen function
 **************************************************************************/
 
 // Fullscreen message
@@ -85,29 +85,8 @@ function fsMessage() {
     // }
 }
 
-// Get coordinates from click (dsable background)
-function mouseClicked() {
-    print(mouseX, mouseY);
-    fill(205);
-    ellipseMode(CENTER);
-    ellipse(mouseX, mouseY, 5, 5);
-}
-
-// Debug mode
-function drawDebugInfo() {
-  push();
-    fill(255);
-    noStroke();
-    textSize(20);
-    text("X: " + mouseX + "   Y: " + mouseY, 20, 20);
-  pop();
-}
-
 // keyTyped for debugMode and fullscreen
 function keyTyped() {
-  if (key === 'd') {
-    gDebugMode = !gDebugMode;
-  }
   if (key === 'f') {
     let fs = fullscreen();
     fullscreen(!fs);
